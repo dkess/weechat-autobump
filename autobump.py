@@ -24,7 +24,7 @@ import weechat
 
 SCRIPT_NAME = 'autobump'
 SCRIPT_AUTHOR = 'Daniel Kessler <daniel@dkess.me>'
-SCRIPT_VERSION = '0.0.0'
+SCRIPT_VERSION = '0.0.1'
 SCRIPT_LICENSE = 'GPL3'
 SCRIPT_DESC = 'Bump buffers upon activity.'
 
@@ -97,7 +97,7 @@ def on_buffer_activity(buffer):
     weechat.buffer_set(buffer, 'number', '1')
 
 def on_print(data, buffer, date, tags, displayed, highlight, prefix, message):
-    if displayed:
+    if int(displayed):
         on_buffer_activity(buffer)
     return weechat.WEECHAT_RC_OK
 
